@@ -1,0 +1,38 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 40px;
+  img {
+    margin-left: 10px;
+    width: 30px;
+  }
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 80%;
+  p {
+    flex-shrink: 0;
+  }
+  div {
+    a {
+      /* background-color: white; */
+      /* z-index: 100; */
+      margin: 10px;
+      i {
+        font-size: 30px;
+        color: var(--color-ultra-light);
+        transition: 0.2s all ease-in-out;
+      }
+      i:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

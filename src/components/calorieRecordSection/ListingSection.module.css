@@ -1,0 +1,16 @@
+.filter-section {
+  margin-top: 10px;
+}
+.filter-label {
+  font-size: 18px;
+  color: var(--color-ultra-light);
+  margin-right: 10px;
+}
+.filter-input {
+  background-color: var(--color-light);
+  color: var(--color-black);
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}

@@ -1,0 +1,68 @@
+/* Form styles */
+
+.form {
+  background-color: var(--color-ultra-light);
+  padding: 20px;
+  border-radius: 10px;
+  display: grid;
+  margin-bottom: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background-color: var(--color-dark);
+  color: var(--color-black);
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 17px;
+  display: block;
+  border: 1px solid var(--color-normal);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+button:disabled {
+  background-color: #e9e3e3;
+  border: none;
+  color: black;
+}
+.cancel-button {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  margin-left: 10px;
+}
+.track-button {
+  background-color: var(--color-light);
+  width: 100%;
+  max-width: 150px;
+  margin: auto;
+  transition: 0.2s all ease-in-out;
+}
+.track-button:hover {
+  background-color: var(--color-normal);
+}
+.track-button:active {
+  /* animation-name: bounce;
+  animation-duration: 0.5s; */
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  /* animation-duration: 2s; */
+}
+@media (min-width: 768px) {
+  form {
+    grid-template-columns: min-content 1fr min-content 1fr;
+    grid-template-rows: repeat(4, auto);
+    column-gap: 10px;
+  }
+  footer {
+    grid-column: 1/-1;
+    max-width: 100%;
+    min-width: 500px;
+    margin: auto;
+  }
+}

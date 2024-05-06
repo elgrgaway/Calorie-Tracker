@@ -1,0 +1,13 @@
+.recordMonth {
+  color: darkred;
+  font-weight: 700;
+  font-size: 11px;
+}
+.recordDay {
+  font-size: 16px;
+  font-weight: 400;
+}
+.recordYear {
+  color: lightgray;
+  font-size: 11px;
+}

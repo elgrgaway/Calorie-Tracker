@@ -1,0 +1,44 @@
+.record {
+  /* border: 1px solid #ccc; */
+  border-radius: 3px;
+  list-style: none;
+  display: flex;
+  color: var(--color-normal);
+  justify-content: space-around;
+  padding: 0;
+  height: 40px;
+  align-items: center;
+  background-color: var(--color-black);
+  padding: 5px 0;
+  height: auto;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  /* margin: 10px auto; */
+  border: 1px solid black;
+  background-color: var(--color-ultra-light-black);
+  width: 100%;
+  transition: 0.2s all ease-in-out;
+}
+.record:hover {
+  transform: scale(0.97);
+  background-color: var(--color-light-black);
+}
+.middle {
+  width: 150px;
+  text-align: center;
+  color: var(--color-ultra-light);
+}
+.record-calories {
+  color: var(--color-dark);
+  font-weight: 500;
+}
+.cross {
+  color: rgb(240, 131, 131);
+  cursor: pointer;
+  min-width: 45px;
+  text-align: center;
+}
+.cross:hover {
+  background-color: var(--color-black);
+}

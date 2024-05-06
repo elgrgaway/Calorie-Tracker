@@ -1,0 +1,25 @@
+.form label {
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.form-input {
+  background-color: var(--color-black);
+  color: var(--color-light);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  min-width: 255px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.error {
+  background-color: var(--color-light);
+  border: 1px solid maroon;
+  outline: 1px solid maroon;
+  color: maroon;
+}

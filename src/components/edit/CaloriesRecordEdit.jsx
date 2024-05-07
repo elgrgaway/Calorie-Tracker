@@ -24,10 +24,11 @@ const modalStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "fit-content", // Full width
+    minWidth: "80%",
+    // maxWidth: "90%", // Full width
     borderRadius: "10px",
-    backgroundColor: "var(--color-light)",
-    border: "1px solid var(--color-normal)",
+    backgroundColor: "var(--color-ultra-light)",
+    border: "10px solid var(--color-normal)",
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
     // transition: "0.3s all",
   },
@@ -41,6 +42,39 @@ const DEFALUT_VALUE = {
   content: false,
   calories: true,
 };
+function formReducer(state, action) {
+  const { key, value, auxValue, type } = action;
+
+  switch (type) {
+    case "RESET_FORM":
+      return DEFALUT_VALUE; // Reset form state to default values
+    case "date":
+    case "meal":
+      return {
+        ...state,
+        meal: value,
+      };
+    case "content":
+      const validContent =
+        (value === "sport" && auxValue < 0) ||
+        (value !== "sport" && auxValue >= 0);
+      return {
+        ...state,
+        content: !!value,
+        calories: validContent,
+      };
+    case "calories":
+      const validCalories =
+        (auxValue === "sport" && value < 0) ||
+        (auxValue !== "sport" && value >= 0);
+      return {
+        ...state,
+        calories: validCalories,
+      };
+    default:
+      return state;
+  }
+}
 // function formReducer(state, action) {
 //   const { key, value, auxValue } = action;
 
@@ -76,37 +110,37 @@ const DEFALUT_VALUE = {
 //       };
 //   }
 // }
-function formReducer(state, action) {
-  const { key, value, auxValue } = action;
+// function formReducer(state, action) {
+//   const { key, value, auxValue } = action;
 
-  switch (key) {
-    case "date":
-    case "meal":
-      return {
-        ...state,
-        [key]: value,
-      };
-    case "content":
-      const validContent =
-        (value === "sport" && auxValue < 0) ||
-        (value !== "sport" && auxValue >= 0);
-      return {
-        ...state,
-        [key]: !!value,
-        calories: validContent,
-      };
-    case "calories":
-      const validCalories =
-        (auxValue === "sport" && value < 0) ||
-        (auxValue !== "sport" && value >= 0);
-      return {
-        ...state,
-        [key]: validCalories,
-      };
-    default:
-      return state;
-  }
-}
+//   switch (key) {
+//     case "date":
+//     case "meal":
+//       return {
+//         ...state,
+//         [key]: value,
+//       };
+//     case "content":
+//       const validContent =
+//         (value === "sport" && auxValue < 0) ||
+//         (value !== "sport" && auxValue >= 0);
+//       return {
+//         ...state,
+//         [key]: !!value,
+//         calories: validContent,
+//       };
+//     case "calories":
+//       const validCalories =
+//         (auxValue === "sport" && value < 0) ||
+//         (auxValue !== "sport" && value >= 0);
+//       return {
+//         ...state,
+//         [key]: validCalories,
+//       };
+//     default:
+//       return state;
+//   }
+// }
 
 function CaloriesRecordEdit(props) {
   const contentRef = useRef();
@@ -171,6 +205,7 @@ function CaloriesRecordEdit(props) {
   };
   const modalButtonsHandler = () => {
     // dispatchFn(DEFALUT_VALUE);
+    dispatchFn({ type: "RESET_FORM" });
 
     closeModal();
   };

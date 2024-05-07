@@ -9,7 +9,7 @@ import AppContextProvider from "../AppContext.jsx";
 const RECORDS_KEY = "records";
 
 export function TrackerPage() {
-  const [records, setRecords] = useState();
+  const [records, setRecords] = useState([]);
 
   const save = () => {
     localStorage.setItem(RECORDS_KEY, JSON.stringify(records));

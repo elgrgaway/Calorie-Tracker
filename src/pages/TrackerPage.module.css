@@ -45,8 +45,11 @@
   }
 }
 @media (max-width: 500px) {
+  .title {
+    font-size: 35px;
+  }
   .footer {
     justify-content: center;
-    margin-top: 200px;
+    /* margin-top: 200px; */
   }
 }

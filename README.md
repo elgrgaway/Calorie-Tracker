@@ -1,8 +1,11 @@
-# React + Vite
+# [Live Demo 🔥](https://calorie-record.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Calorie Tracker using React.js
 
-Currently, two official plugins are available:
+Welcome to the Calorie Tracker project! This application allows users to track their daily calorie intake by recording meals and their respective calorie content. It is built using React.js and provides a user-friendly interface for adding and managing records.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features
+
+- **Record Management**: Easily add new records for meals, specifying the date, meal name, content, and calories.
+- **Date Navigation**: A convenient date picker at the top of the page allows users to switch between different days for recording meals.
+- **Multiple Records per Day**: Users can add multiple records for the same day, enabling comprehensive tracking of their calorie intake.

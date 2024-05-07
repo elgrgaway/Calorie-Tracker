@@ -51,7 +51,7 @@ export function TrackerPage() {
       <div className="app">
         <h1 className={styles.title}>
           Calorie Tracker
-          <img src="../../public/calories.png" alt="" />
+          <img src="calories.png" alt="" />
         </h1>
         <CaloriesRecordEdit formSubmit={formSubmitHandler} />
         {records && <ListingSection allRecords={records} />}

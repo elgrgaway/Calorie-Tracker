@@ -42,3 +42,11 @@
 .cross:hover {
   background-color: var(--color-black);
 }
+@media (max-width: 700px) {
+  .record {
+    font-size: 15px;
+  }
+  .middle {
+    width: 75px;
+  }
+}

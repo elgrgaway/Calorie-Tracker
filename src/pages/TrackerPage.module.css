@@ -11,28 +11,42 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  background-color: var(--color-black);
+  text-align: center;
   align-items: center;
-  position: absolute;
+  flex-wrap: wrap;
+  /* position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 80%;
+  width: 80dvw; */
+  margin-top: 300px;
+
+  margin-bottom: 10ox;
+
   p {
     flex-shrink: 0;
   }
   div {
+    flex-shrink: 0;
     a {
       /* background-color: white; */
       /* z-index: 100; */
       margin: 10px;
       i {
-        font-size: 30px;
+        font-size: 25px;
         color: var(--color-ultra-light);
         transition: 0.2s all ease-in-out;
       }
       i:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
+  }
+}
+@media (max-width: 500px) {
+  .footer {
+    justify-content: center;
+    margin-top: 200px;
   }
 }

@@ -11,7 +11,6 @@ import React, {
 import styles from "./CaloriesRecordEdit.module.css";
 import Modal from "react-modal"; // Importing react-modal
 import { AppContext } from "../../AppContext";
-import { getDateFromString } from "../../utils";
 import FormInput from "../common/FormInput";
 import { useMemo } from "react";
 Modal.setAppElement("#root"); // Set the root element for accessibility
@@ -43,11 +42,10 @@ const DEFALUT_VALUE = {
   calories: true,
 };
 function formReducer(state, action) {
-  const { key, value, auxValue, type } = action;
+  const { key, value, auxValue } = action;
 
-  switch (type) {
-    case "RESET_FORM":
-      return DEFALUT_VALUE; // Reset form state to default values
+  let valid = false;
+  switch (key) {
     case "date":
     case "meal":
       return {
@@ -55,92 +53,26 @@ function formReducer(state, action) {
         meal: value,
       };
     case "content":
-      const validContent =
-        (value === "sport" && auxValue < 0) ||
-        (value !== "sport" && auxValue >= 0);
+      valid = value !== "sport" && auxValue >= 0;
       return {
         ...state,
         content: !!value,
-        calories: validContent,
+        calories: valid,
       };
+
     case "calories":
-      const validCalories =
-        (auxValue === "sport" && value < 0) ||
-        (auxValue !== "sport" && value >= 0);
+      auxValue !== "sport" && value >= 0;
       return {
         ...state,
-        calories: validCalories,
+        calories: valid,
       };
     default:
-      return state;
+      return {
+        ...state,
+        meal: !!value,
+      };
   }
 }
-// function formReducer(state, action) {
-//   const { key, value, auxValue } = action;
-
-//   let valid = false;
-//   switch (key) {
-//     case "date":
-//     case "meal":
-//       return {
-//         ...state,
-//         meal: value,
-//       };
-//     case "content":
-//       valid =
-//         (value === "sport" && auxValue < 0) ||
-//         (value !== "sport" && auxValue >= 0);
-//       return {
-//         ...state,
-//         content: !!value,
-//         calories: valid,
-//       };
-
-//     case "calories":
-//       (auxValue === "sport" && value < 0) ||
-//         (auxValue !== "sport" && value >= 0);
-//       return {
-//         ...state,
-//         calories: valid,
-//       };
-//     default:
-//       return {
-//         ...state,
-//         meal: !!value,
-//       };
-//   }
-// }
-// function formReducer(state, action) {
-//   const { key, value, auxValue } = action;
-
-//   switch (key) {
-//     case "date":
-//     case "meal":
-//       return {
-//         ...state,
-//         [key]: value,
-//       };
-//     case "content":
-//       const validContent =
-//         (value === "sport" && auxValue < 0) ||
-//         (value !== "sport" && auxValue >= 0);
-//       return {
-//         ...state,
-//         [key]: !!value,
-//         calories: validContent,
-//       };
-//     case "calories":
-//       const validCalories =
-//         (auxValue === "sport" && value < 0) ||
-//         (auxValue !== "sport" && value >= 0);
-//       return {
-//         ...state,
-//         [key]: validCalories,
-//       };
-//     default:
-//       return state;
-//   }
-// }
 
 function CaloriesRecordEdit(props) {
   const contentRef = useRef();
@@ -204,8 +136,11 @@ function CaloriesRecordEdit(props) {
     // );
   };
   const modalButtonsHandler = () => {
-    // dispatchFn(DEFALUT_VALUE);
-    dispatchFn({ type: "RESET_FORM" });
+    dispatchFn({
+      key: "content",
+      value: false,
+      auxValue: Number(caloriesRef.current.value),
+    });
 
     closeModal();
   };

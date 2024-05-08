@@ -39,7 +39,7 @@ export function TrackerPage() {
   const formSubmitHandler = (record) => {
     const formattedRecords = {
       ...record,
-      date: record.date,
+      date: Date(record.date),
       id: crypto.randomUUID(),
     };
     setRecords((previousRecords) => [formattedRecords, ...previousRecords]);
